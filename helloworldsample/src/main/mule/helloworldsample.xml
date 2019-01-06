@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="91e6a3d2-caa0-4072-be78-ab837f7b4d2f" basePath="/api" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="helloworldsampleFlow" doc:id="fb48e4c5-4c61-441f-8e97-7b671b95e825" >
+		<http:listener doc:name="Listener" doc:id="707977c0-ec5e-4a9f-aebb-312920f52a38" config-ref="HTTP_Listener_config" path="/hello/print"/>
+		<logger level="INFO" doc:name="Logger" doc:id="d0f93501-0c30-4c8c-9c6e-c37c4cd14e4e" message="Message is : Good Morning people. #[payload]"/>
+	</flow>
+</mule>
